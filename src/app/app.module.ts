@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { UtilsModule } from './_modules/utils/utils.module';
 @NgModule({
   declarations: [AppComponent, SidebarComponent, HomeComponent, LoginComponent],
   imports: [
@@ -29,6 +30,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatDialogModule,
     MatExpansionModule,
     MatAutocompleteModule,
+    UtilsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

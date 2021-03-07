@@ -136,3 +136,16 @@
   outline: none;
   border: 2px solid rgb(72, 212, 67);
 }
+
+.logout__btn {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  position: relative;
+  outline: none;
+  border: none;
+  &:active,
+  &:hover {
+    background: #ababab;
+  }
+}

@@ -56,6 +56,22 @@
   width: 20px;
   height: 20px;
 }
+.menu__icon {
+  background: url("./../assets/icons/menu.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+.logut__btn__exit {
+  background: url("./../assets/icons/exit.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
 
 .icon__element__circle {
   background: url("./../assets/icons/circle.svg");
@@ -84,4 +100,33 @@
   background-size: contain;
   width: 20px;
   height: 20px;
+}
+
+// menu
+.menu__icon {
+  background: url("./../assets/icons/menu.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+.logout__picture {
+  background: url("./../assets/icons/user.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+.logout__btn__exit {
+  background: url("./../assets/icons/exit.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }

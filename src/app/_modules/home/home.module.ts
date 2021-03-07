@@ -7,7 +7,6 @@ import { ProgrammingComponent } from './components/programming/programming.compo
 import { ReportsComponent } from './components/reports/reports.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { UsersComponent } from './components/users/users.component';
-import { UtilsModule } from '../utils/utils.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
@@ -31,7 +30,6 @@ import { CreateFormComponent } from './components/roles/components/create-form/c
   imports: [
     CommonModule,
     HomeRoutingModule,
-    UtilsModule,
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
