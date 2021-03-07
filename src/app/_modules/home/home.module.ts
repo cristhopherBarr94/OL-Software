@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CreateFormComponent } from './components/roles/components/create-form/create-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ReportsComponent,
     RolesComponent,
     UsersComponent,
+    CreateFormComponent,
   ],
   imports: [
     CommonModule,

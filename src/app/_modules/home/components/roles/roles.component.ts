@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { PeriodicElement, ELEMENT_DATA } from 'src/app/_mocks/users';
 import { UiService } from 'src/app/_services/ui.service';
 import { LoadingComponent } from './../../../utils/components/loading/loading.component';
-
+import { CreateFormComponent } from './components/create-form/create-form.component';
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
@@ -145,7 +145,7 @@ export class RolesComponent implements OnInit, AfterViewInit {
     this.uiService.closeDialog();
   }
   public createUser() {
-    // this.uiService.openDialog(CreateFormComponent, 'create-modal', false);
+    this.uiService.openDialog(CreateFormComponent, 'create-modal', false);
   }
   public searchUser() {
     if (this.searchForm.valid) {
