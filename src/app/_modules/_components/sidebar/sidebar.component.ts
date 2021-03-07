@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
   public toggle: boolean = true;
+  @ViewChild(MatAccordion) accordion: MatAccordion;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -17,5 +20,6 @@ export class SidebarComponent implements OnInit {
 
   public handleOut() {
     this.toggle = true;
+    this.accordion.closeAll();
   }
 }
