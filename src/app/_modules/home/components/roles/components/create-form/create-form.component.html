@@ -60,12 +60,12 @@
         class="fullInput"
         [ngClass]="getClassInput(createForm.controls.identification)"
       >
-        <mat-label>identificacion (C.C)</mat-label>
+        <mat-label>identificación (C.C)</mat-label>
         <input
           matInput
           (input)="inputValidatorNumeric($event)"
           formControlName="identification"
-          placeholder="Número de identificacion"
+          placeholder="Número de identificación"
           minlength="7"
           maxlength="10"
           data-qadp="phone"
@@ -76,7 +76,7 @@
             createForm.controls.identification.errors
           "
         >
-          *Has ingresado una identificacion inválida
+          *Has ingresado una identificación inválida
         </mat-error>
       </mat-form-field>
 
@@ -198,7 +198,7 @@
         class="fullInput"
         [ngClass]="getClassInput(createForm.controls.phone)"
       >
-        <mat-label>Telefono</mat-label>
+        <mat-label>Teléfono</mat-label>
         <input
           matInput
           (input)="inputValidatorNumeric($event)"

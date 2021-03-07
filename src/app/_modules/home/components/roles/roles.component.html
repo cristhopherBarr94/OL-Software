@@ -24,7 +24,7 @@
 
         <!-- identification Column -->
         <ng-container matColumnDef="identification">
-          <th mat-header-cell *matHeaderCellDef>Identificacion (C.C)</th>
+          <th mat-header-cell *matHeaderCellDef>identificación (C.C)</th>
           <td mat-cell *matCellDef="let element">
             {{ element.identification }}
           </td>
@@ -48,7 +48,7 @@
 
         <!-- phone Column -->
         <ng-container matColumnDef="phone">
-          <th mat-header-cell *matHeaderCellDef>Telefono</th>
+          <th mat-header-cell *matHeaderCellDef>Teléfono</th>
           <td mat-cell *matCellDef="let element">
             {{ element.phone }}
           </td>
@@ -56,13 +56,13 @@
 
         <!-- email Column -->
         <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef>Correo Electronico</th>
+          <th mat-header-cell *matHeaderCellDef>Correo Electrónico</th>
           <td mat-cell *matCellDef="let element">{{ element.email }}</td>
         </ng-container>
 
         <!-- action Column -->
         <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef>Accion</th>
+          <th mat-header-cell *matHeaderCellDef>Acción</th>
           <td mat-cell *matCellDef="let element">
             <button class="btn-table">
               <span class="edit-button"></span>
@@ -87,7 +87,7 @@
   <div class="search-menu">
     <div class="search-header">
       <div class="add-user-icon"></div>
-      <h1 class="ol-title-blue">Filtrar busqueda</h1>
+      <h1 class="ol-title-blue">Filtrar búsqueda</h1>
     </div>
     <div class="search-form">
       <form [formGroup]="searchForm" class="searchUserform" autocomplete="off">
@@ -148,12 +148,12 @@
           class="fullInput"
           [ngClass]="getClassInput(searchForm.controls.identification)"
         >
-          <mat-label>identificacion (C.C)</mat-label>
+          <mat-label>identificación (C.C)</mat-label>
           <input
             matInput
             (input)="inputValidatorNumeric($event)"
             formControlName="identification"
-            placeholder="Número de identificacion"
+            placeholder="Número de identificación"
             minlength="7"
             maxlength="10"
             data-qadp="phone"
@@ -164,7 +164,7 @@
               searchForm.controls.identification.errors
             "
           >
-            *Has ingresado una identificacion inválida
+            *Has ingresado una identificación inválida
           </mat-error>
         </mat-form-field>
 
@@ -285,7 +285,7 @@
           class="fullInput"
           [ngClass]="getClassInput(searchForm.controls.phone)"
         >
-          <mat-label>identificacion</mat-label>
+          <mat-label>Teléfono</mat-label>
           <input
             matInput
             (input)="inputValidatorNumeric($event)"
