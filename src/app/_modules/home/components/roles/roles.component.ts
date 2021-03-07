@@ -145,7 +145,7 @@ export class RolesComponent implements OnInit, AfterViewInit {
     this.uiService.closeDialog();
   }
   public createUser() {
-    this.uiService.openDialog(CreateFormComponent, 'create-modal', false);
+    this.uiService.openDialog(CreateFormComponent, 'create-modal', true);
   }
   public searchUser() {
     if (this.searchForm.valid) {

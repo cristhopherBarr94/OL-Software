@@ -1,1 +1,240 @@
-<p>create-form works!</p>
+<form [formGroup]="createForm" class="searchUserform" autocomplete="off">
+  <h3>Agregar nuevo usuario</h3>
+
+  <div class="create-user-form">
+    <div class="create-user-form__clmL">
+      <!-- first name -->
+      <mat-form-field
+        appearance="fill"
+        floatLabel="auto"
+        class="fullInput"
+        [ngClass]="getClassInput(createForm.controls.first_names)"
+      >
+        <mat-label>Nombres</mat-label>
+        <input
+          matInput
+          (input)="inputValidatorAlphabetical($event)"
+          formControlName="first_names"
+          placeholder="Nombres"
+          maxlength="50"
+        />
+        <mat-error
+          *ngIf="
+            createForm.controls.first_names.touched &&
+            createForm.controls.first_names.errors
+          "
+        >
+          *Has ingresado un dato inválido
+        </mat-error>
+      </mat-form-field>
+
+      <!-- last name -->
+      <mat-form-field
+        appearance="fill"
+        floatLabel="auto"
+        class="fullInput"
+        [ngClass]="getClassInput(createForm.controls.last_names)"
+      >
+        <mat-label>Apellidos</mat-label>
+        <input
+          matInput
+          (input)="inputValidatorAlphabetical($event)"
+          formControlName="last_names"
+          placeholder="Apellidos"
+          maxlength="50"
+        />
+        <mat-error
+          *ngIf="
+            createForm.controls.last_names.touched &&
+            createForm.controls.last_names.errors
+          "
+        >
+          *Has ingresado un dato inválido
+        </mat-error>
+      </mat-form-field>
+
+      <!-- identification -->
+      <mat-form-field
+        appearance="fill"
+        floatLabel="auto"
+        class="fullInput"
+        [ngClass]="getClassInput(createForm.controls.identification)"
+      >
+        <mat-label>identificacion (C.C)</mat-label>
+        <input
+          matInput
+          (input)="inputValidatorNumeric($event)"
+          formControlName="identification"
+          placeholder="Número de identificacion"
+          minlength="7"
+          maxlength="10"
+          data-qadp="phone"
+        />
+        <mat-error
+          *ngIf="
+            createForm.controls.identification.touched &&
+            createForm.controls.identification.errors
+          "
+        >
+          *Has ingresado una identificacion inválida
+        </mat-error>
+      </mat-form-field>
+
+      <!-- rol -->
+      <mat-form-field
+        appearance="fill"
+        floatLabel="auto"
+        class="fullInput"
+        [ngClass]="getClassInputSelect(createForm.controls.rol)"
+      >
+        <mat-label>Rol asociado</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Rol"
+          aria-label="Number"
+          [formControl]="createForm.controls.rol"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option value="Administrador"> Administrador </mat-option>
+          <mat-option value="Visitante"> Visitante </mat-option>
+        </mat-autocomplete>
+        <mat-error
+          *ngIf="
+            createForm.controls.rol.touched &&
+            createForm.controls.rol.hasError('required')
+          "
+          >Debes seleccionar un campo</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="create-user-form__clmR">
+      <!-- state -->
+      <mat-form-field
+        appearance="fill"
+        floatLabel="auto"
+        class="fullInput"
+        [ngClass]="getClassInputSelect(createForm.controls.state)"
+      >
+        <mat-label>Estado</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Estado"
+          aria-label="Number"
+          [formControl]="createForm.controls.state"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option value="Active"> Activo </mat-option>
+          <mat-option value="Inactive"> Inactivo </mat-option>
+        </mat-autocomplete>
+        <mat-error
+          *ngIf="
+            createForm.controls.state.touched &&
+            createForm.controls.state.hasError('required')
+          "
+          >Debes seleccionar un campo</mat-error
+        >
+      </mat-form-field>
+
+      <!-- email -->
+      <mat-form-field
+        appearance="fill"
+        floatLabel="auto"
+        class="fullInput"
+        [ngClass]="getClassInput(createForm.controls.email)"
+      >
+        <mat-label>Correo electrónico</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          placeholder="example@example.com"
+          type="email"
+          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$"
+          maxlength="250"
+          data-qadp="email"
+        />
+        <mat-error
+          *ngIf="
+            createForm.controls.email.touched &&
+            createForm.controls.email.errors
+          "
+        >
+          *Has ingresado un dato inválido
+        </mat-error>
+      </mat-form-field>
+
+      <!-- password -->
+      <mat-form-field
+        appearance="fill"
+        floatLabel="auto"
+        class="fullInput"
+        [ngClass]="getClassInput(createForm.controls.password)"
+      >
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          id="password"
+          formControlName="password"
+          [type]="!hide ? 'password' : 'text'"
+          maxlength="30"
+          data-qadp="password"
+          [(ngModel)]="password"
+        />
+        <mat-error
+          *ngIf="
+            createForm.controls.password.touched &&
+            createForm.controls.password.invalid
+          "
+          >*Este campo es obligatorio, mínimo 4 caracteres</mat-error
+        >
+      </mat-form-field>
+      <!-- phone -->
+      <mat-form-field
+        appearance="fill"
+        floatLabel="auto"
+        class="fullInput"
+        [ngClass]="getClassInput(createForm.controls.phone)"
+      >
+        <mat-label>Telefono</mat-label>
+        <input
+          matInput
+          (input)="inputValidatorNumeric($event)"
+          formControlName="phone"
+          placeholder="Número de teléfono"
+          minlength="7"
+          maxlength="10"
+          data-qadp="phone"
+        />
+        <mat-error
+          *ngIf="
+            createForm.controls.phone.touched &&
+            createForm.controls.phone.errors
+          "
+        >
+          *Has ingresado un telefono inválido
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button
+      class="btn-filter"
+      (click)="createUser()"
+      block="block"
+      [ngClass]="{ 'button-disabled': createForm.invalid }"
+    >
+      <span>Aceptar</span>
+    </button>
+    <button
+      class="btn-clear"
+      (click)="closeForm()"
+      block="block"
+      [ngClass]="{ 'button-disabled': createForm.invalid }"
+    >
+      <span>Cancelar</span>
+    </button>
+  </div>
+</form>
