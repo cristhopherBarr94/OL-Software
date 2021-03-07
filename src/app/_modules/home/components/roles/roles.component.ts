@@ -8,6 +8,9 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { PeriodicElement, ELEMENT_DATA } from 'src/app/_mocks/users';
+import { UiService } from 'src/app/_services/ui.service';
+import { LoadingComponent } from './../../../utils/components/loading/loading.component';
+
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
@@ -32,7 +35,7 @@ export class RolesComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private uiService: UiService) {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -138,13 +141,18 @@ export class RolesComponent implements OnInit, AfterViewInit {
       return 'Ingrese solo letras';
     }
   }
-
+  public closeForm() {
+    this.uiService.closeDialog();
+  }
+  public createUser() {
+    // this.uiService.openDialog(CreateFormComponent, 'create-modal', false);
+  }
   public searchUser() {
     if (this.searchForm.valid) {
       // TODO http request to get access key
-      this.showLoading = true;
+      this.uiService.openDialog(LoadingComponent, 'loading-modal', true);
       setTimeout(() => {
-        this.showLoading = false;
+        this.closeForm();
       }, 2000);
     } else {
       (<any>Object).values(this.searchForm.controls).forEach((control) => {
