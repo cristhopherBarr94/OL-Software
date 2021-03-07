@@ -1,0 +1,112 @@
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none !important;
+}
+
+.sidebar {
+  width: 70px;
+  height: 100vh;
+  max-height: 800px;
+  background: rgb(56, 56, 224);
+  background: linear-gradient(
+    0deg,
+    rgba(56, 56, 224, 1) 0%,
+    rgba(40, 166, 250, 1) 90%
+  );
+  transition: width 0.5s ease;
+
+  .heading {
+    width: 85%;
+    max-width: 30px;
+    height: 35px;
+    padding: 10px;
+    padding-left: 10px;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: lighter;
+    color: #fff;
+    border-bottom: 1px solid white;
+    margin: auto;
+    margin-left: 10px;
+  }
+
+  &:hover,
+  &:visited {
+    width: 250px !important;
+    .heading {
+      max-width: none;
+      &::after {
+        content: "OLSoftware";
+        margin-left: 50px;
+      }
+    }
+    .icon__element {
+      &__map {
+        &::before {
+          content: "";
+          content: "Programacion";
+          margin-left: 50px;
+        }
+      }
+      &__list {
+        &::after {
+          content: "Gestion de operaciones";
+          margin-left: 50px;
+        }
+      }
+      &__equalizer {
+        &::before {
+          content: "Perfiles";
+          margin-left: 50px;
+        }
+      }
+      &__R {
+        &::before {
+          content: " Roles";
+          margin-left: 50px;
+        }
+      }
+      &__U {
+        &::before {
+          content: "Usuarios";
+          margin-left: 50px;
+        }
+      }
+      &__file {
+        &::before {
+          content: "Reportes";
+          margin-left: 50px;
+        }
+      }
+    }
+  }
+}
+* > ::ng-deep .mat-expansion-panel-header {
+  font-family: "Roboto" !important;
+  font-size: 14px;
+  font-weight: lighter;
+  color: #fff;
+  margin: 10px auto;
+}
+.mat-expansion-panel {
+  margin: 0;
+  background: transparent !important;
+  box-shadow: none;
+}
+.icon__element {
+  width: 20px;
+  height: 20px;
+
+  &__R {
+    &::before {
+      content: " ";
+    }
+  }
+  &__U {
+    &::before {
+      content: " ";
+    }
+  }
+}

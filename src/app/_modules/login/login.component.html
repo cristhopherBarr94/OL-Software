@@ -1,0 +1,71 @@
+<div class="main-container login-background"></div>
+<div class="login-form-container">
+  <h1>Inicio de sesión</h1>
+  <form [formGroup]="userLoginForm" class="form-section" autocomplete="off">
+    <mat-form-field
+      appearance="fill"
+      floatLabel="auto"
+      class="fullInput"
+      [ngClass]="getClassInput(userLoginForm.controls.email)"
+    >
+      <mat-label>Usuario</mat-label>
+
+      <input
+        matInput
+        formControlName="email"
+        type="email"
+        required
+        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$"
+        maxlength="30"
+        data-qadp="email"
+      />
+      <mat-icon matSuffix>account_box</mat-icon>
+      <mat-error
+        *ngIf="
+          userLoginForm.controls.email.touched &&
+          userLoginForm.controls.email.errors
+        "
+      >
+        *Has ingresado un dato inválido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="fill"
+      floatLabel="auto"
+      class="fullInput"
+      [ngClass]="getClassInput(userLoginForm.controls.password)"
+    >
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        id="password"
+        formControlName="password"
+        [type]="!hide ? 'password' : 'text'"
+        required
+        maxlength="30"
+        data-qadp="password"
+        [(ngModel)]="password"
+      />
+      <mat-icon matSuffix (click)="hide = !hide">{{
+        !hide ? "lock" : "lock_open"
+      }}</mat-icon>
+      <mat-error
+        *ngIf="
+          userLoginForm.controls.password.touched &&
+          userLoginForm.controls.password.invalid
+        "
+        >*Este campo es obligatorio, mínimo 4 caracteres</mat-error
+      >
+    </mat-form-field>
+
+    <button
+      class="ol-btn-primary"
+      (click)="loginUser()"
+      block="block"
+      [ngClass]="{ 'button-disabled': userLoginForm.invalid }"
+    >
+      <span>Iniciar sesión</span>
+    </button>
+  </form>
+</div>

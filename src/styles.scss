@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  background: #ececec;
+}
+body {
+  margin: 0;
+  font-family: "Roboto";
+}
+
+/* ol Theme */
+@import "./theme/material.scss";
+@import "./theme/button.scss";
+@import "./theme/content.scss";
+@import "./theme/font.scss";
+@import "./theme/input.scss";
+@import "./theme/img.scss";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

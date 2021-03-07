@@ -1,0 +1,87 @@
+.login-background {
+  background-image: url("./../assets/img/candelaria.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  -webkit-clip-path: ellipse(48% 73% at 32% 2%);
+  clip-path: ellipse(40% 80% at 35% 2%);
+}
+
+.icon__element__map {
+  background: url("./../assets/icons/map.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+.icon__element__list {
+  background: url("./../assets/icons/list.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+.icon__element__equalizer {
+  background: url("./../assets/icons/equalizer.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+.icon__element__R {
+  background: url("./../assets/icons/R.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+}
+.icon__element__U {
+  background: url("./../assets/icons/U.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+}
+.icon__element__file {
+  background: url("./../assets/icons/fileSheet.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+
+.icon__element__circle {
+  background: url("./../assets/icons/circle.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  position: absolute;
+}
+
+.creation__logo {
+  background: url("./../assets/icons/people.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+}
+
+.add-user-icon {
+  background: url("./../assets/icons/add-user.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+}

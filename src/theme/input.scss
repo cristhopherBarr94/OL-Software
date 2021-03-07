@@ -1,0 +1,111 @@
+@mixin input($color, $label-color, $border, $padding) {
+  span,
+  input,
+  :active {
+    color: $color;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .mat-form-field-label {
+    color: $label-color;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .mat-form-field-flex {
+    border: $border;
+    border-radius: 4px;
+  }
+  &:focus .mat-form-field-flex {
+    border: 2px solid #377f5e;
+    border-radius: 4px;
+  }
+  .mat-form-field-ripple,
+  .mat-form-field-underline {
+    display: none;
+  }
+  //   margin-bottom: 5px;
+}
+
+@mixin select($backgraund-color, $color, $label-color, $border, $padding) {
+  @include input($color, $label-color, $border, $padding);
+  .mat-select-arrow {
+    color: $color;
+  }
+}
+
+mat-form-field .mat-form-field {
+  font-size: 16px;
+  color: #000;
+}
+
+.mat-focused {
+  label {
+    color: #000 !important;
+  }
+  .mat-input-element {
+    caret-color: #000 !important;
+  }
+}
+
+.mat-form-field-wrapper {
+  padding: 0px !important;
+}
+
+.mat-error {
+  padding: 0;
+  margin-top: 15px;
+}
+
+.fullInput {
+  width: 100%;
+}
+
+.input-ol {
+  @include input(#000, #bbbbbb, 1px solid #d3e0ea, 5px 16px);
+  margin: 10px auto;
+}
+
+.input-ol-error {
+  @include input(#000, #ff0c3e, 1px solid #ff0c3e, 5px 16px);
+  margin: 10px auto;
+}
+
+.input-ol-ok {
+  @include input(#000, #323edd, 1px solid #d3e0ea, 5px 16px);
+  margin: 10px auto;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.select-ol {
+  @include select(#ffffff, #000, #bbbbbb, 1px solid #d3e0ea, 5px 16px);
+  margin: 10px auto;
+}
+
+.select-ol-ok {
+  @include select(#ffffff, #000, #323edd, 1px solid #d3e0ea, 5px 16px);
+  margin: 10px auto;
+}
+
+.select-ol-error {
+  @include select(#ffffff, #000, #ff0c3e, 1px solid #ff0c3e, 5px 16px);
+  margin: 10px auto;
+}
+
+mat-option {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 14px;
+  line-height: 50px;
+  background: #3742df;
+  &.mat-active,
+  &.mat-selected,
+  &.mat-focus-indicator:hover {
+    color: #000 !important;
+    background: #ffffff !important;
+  }
+}

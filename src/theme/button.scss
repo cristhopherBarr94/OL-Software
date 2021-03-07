@@ -1,0 +1,138 @@
+@mixin btn(
+  $color,
+  $background,
+  $border,
+  $font-family,
+  $font-size,
+  $width,
+  $height,
+  $border-hover
+) {
+  width: $width;
+  height: $height;
+  min-height: $height;
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $color;
+  cursor: pointer;
+  background-color: $background;
+  outline: none;
+  border-radius: 4px;
+
+  span {
+    font-size: $font-size;
+    font-weight: normal;
+  }
+
+  &:hover {
+    border: $border-hover;
+    background: $background;
+  }
+
+  &:active {
+    background: $color;
+    span {
+      color: $background;
+    }
+  }
+}
+
+.ol-btn-primary {
+  @include btn(
+    #fff,
+    #323edd,
+    2px solid #ffffff,
+    (Arial, Helvetica, sans-serif),
+    18px,
+    300px,
+    56px,
+    3px solid #ffffff
+  );
+}
+
+.btn-table {
+  @include btn(#fff, transparent, none, "", 18px, 18px, 20px, none);
+  position: relative;
+  border: none !important;
+  margin: 5px;
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &:active {
+    background: #ababab;
+  }
+}
+.delete-button {
+  background: url("./../assets/icons/recicle-bin.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 17px;
+  height: 17px;
+}
+.edit-button {
+  background: url("./../assets/icons/pencil.svg");
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 17px;
+  height: 20px;
+}
+.creation-btn {
+  @include btn(
+    #fff,
+    #00308f,
+    2px solid #ffffff,
+    (Arial, Helvetica, sans-serif),
+    14px,
+    100px,
+    32px,
+    3px solid #ffffff
+  );
+  border: none !important;
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &:active,
+  &:hover {
+    background: #3742df;
+  }
+}
+
+.btn-filter {
+  @include btn(
+    #fff,
+    rgb(72, 212, 67),
+    2px solid #ffffff,
+    "Roboto",
+    14px,
+    100px,
+    32px,
+    3px solid rgb(72, 212, 67)
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(72, 212, 67, 1) 31%,
+    rgba(52, 168, 15, 1) 97%
+  );
+  border: none !important;
+}
+
+.btn-clear {
+  @include btn(
+    rgb(72, 212, 67),
+    #ffffff,
+    "",
+    "Roboto",
+    14px,
+    100px,
+    32px,
+    3px solid rgb(72, 212, 67)
+  );
+  outline: none;
+  border: 2px solid rgb(72, 212, 67);
+}
