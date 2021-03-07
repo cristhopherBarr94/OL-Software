@@ -13,7 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [AppComponent, SidebarComponent, HomeComponent, LoginComponent],
   imports: [
@@ -26,6 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
+    MatExpansionModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

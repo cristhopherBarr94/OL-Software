@@ -1,0 +1,329 @@
+<div class="role-container">
+  <!-- roles table -->
+  <div class="table-container">
+    <div class="creation">
+      <div class="creation__left">
+        <div class="creation__logo"></div>
+        <h1 class="ol-title-blue">Usuarios existentes</h1>
+      </div>
+      <button class="creation-btn">Crear</button>
+    </div>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <!-- first_name Column -->
+        <ng-container matColumnDef="first_name">
+          <th mat-header-cell *matHeaderCellDef>Nombres</th>
+          <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
+        </ng-container>
+
+        <!-- last_name Column -->
+        <ng-container matColumnDef="last_name">
+          <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+          <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
+        </ng-container>
+
+        <!-- identification Column -->
+        <ng-container matColumnDef="identification">
+          <th mat-header-cell *matHeaderCellDef>Identificacion (C.C)</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.identification }}
+          </td>
+        </ng-container>
+
+        <!-- role Column -->
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>Rol asociado</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.role }}
+          </td>
+        </ng-container>
+
+        <!-- state Column -->
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.state }}
+          </td>
+        </ng-container>
+
+        <!-- phone Column -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>Telefono</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.phone }}
+          </td>
+        </ng-container>
+
+        <!-- email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Correo Electronico</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <!-- action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Accion</th>
+          <td mat-cell *matCellDef="let element">
+            <button class="btn-table">
+              <span class="edit-button"></span>
+            </button>
+            <button class="btn-table">
+              <span class="delete-button"></span>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <mat-paginator
+      [length]="8"
+      [pageSizeOptions]="[8]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+  <!-- search toolbox -->
+  <div class="search-menu">
+    <div class="search-header">
+      <div class="add-user-icon"></div>
+      <h1 class="ol-title-blue">Filtrar busqueda</h1>
+    </div>
+    <div class="search-form">
+      <form [formGroup]="searchForm" class="searchUserform" autocomplete="off">
+        <!-- first name -->
+        <mat-form-field
+          appearance="fill"
+          floatLabel="auto"
+          class="fullInput"
+          [ngClass]="getClassInput(searchForm.controls.first_names)"
+        >
+          <mat-label>Nombres</mat-label>
+          <input
+            matInput
+            (input)="inputValidatorAlphabetical($event)"
+            formControlName="first_names"
+            placeholder="Nombres"
+            maxlength="50"
+          />
+          <mat-error
+            *ngIf="
+              searchForm.controls.first_names.touched &&
+              searchForm.controls.first_names.errors
+            "
+          >
+            *Has ingresado un dato inválido
+          </mat-error>
+        </mat-form-field>
+
+        <!-- last name -->
+        <mat-form-field
+          appearance="fill"
+          floatLabel="auto"
+          class="fullInput"
+          [ngClass]="getClassInput(searchForm.controls.last_names)"
+        >
+          <mat-label>Apellidos</mat-label>
+          <input
+            matInput
+            (input)="inputValidatorAlphabetical($event)"
+            formControlName="last_names"
+            placeholder="Apellidos"
+            maxlength="50"
+          />
+          <mat-error
+            *ngIf="
+              searchForm.controls.last_names.touched &&
+              searchForm.controls.last_names.errors
+            "
+          >
+            *Has ingresado un dato inválido
+          </mat-error>
+        </mat-form-field>
+
+        <!-- identification -->
+        <mat-form-field
+          appearance="fill"
+          floatLabel="auto"
+          class="fullInput"
+          [ngClass]="getClassInput(searchForm.controls.identification)"
+        >
+          <mat-label>identificacion (C.C)</mat-label>
+          <input
+            matInput
+            (input)="inputValidatorNumeric($event)"
+            formControlName="identification"
+            placeholder="Número de identificacion"
+            minlength="7"
+            maxlength="10"
+            data-qadp="phone"
+          />
+          <mat-error
+            *ngIf="
+              searchForm.controls.identification.touched &&
+              searchForm.controls.identification.errors
+            "
+          >
+            *Has ingresado una identificacion inválida
+          </mat-error>
+        </mat-form-field>
+
+        <!-- rol -->
+        <mat-form-field
+          appearance="fill"
+          floatLabel="auto"
+          class="fullInput"
+          [ngClass]="getClassInputSelect(searchForm.controls.rol)"
+        >
+          <mat-label>Rol asociado</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Rol"
+            aria-label="Number"
+            [formControl]="searchForm.controls.rol"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option value="Administrador"> Administrador </mat-option>
+            <mat-option value="Visitante"> Visitante </mat-option>
+          </mat-autocomplete>
+          <mat-error
+            *ngIf="
+              searchForm.controls.rol.touched &&
+              searchForm.controls.rol.hasError('required')
+            "
+            >Debes seleccionar un campo</mat-error
+          >
+        </mat-form-field>
+
+        <!-- state -->
+        <mat-form-field
+          appearance="fill"
+          floatLabel="auto"
+          class="fullInput"
+          [ngClass]="getClassInputSelect(searchForm.controls.state)"
+        >
+          <mat-label>Estado</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Estado"
+            aria-label="Number"
+            [formControl]="searchForm.controls.state"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option value="Active"> Activo </mat-option>
+            <mat-option value="Inactive"> Inactivo </mat-option>
+          </mat-autocomplete>
+          <mat-error
+            *ngIf="
+              searchForm.controls.state.touched &&
+              searchForm.controls.state.hasError('required')
+            "
+            >Debes seleccionar un campo</mat-error
+          >
+        </mat-form-field>
+
+        <!-- email -->
+        <mat-form-field
+          appearance="fill"
+          floatLabel="auto"
+          class="fullInput"
+          [ngClass]="getClassInput(searchForm.controls.email)"
+        >
+          <mat-label>Correo electrónico</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="example@example.com"
+            type="email"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$"
+            maxlength="250"
+            data-qadp="email"
+          />
+          <mat-error
+            *ngIf="
+              searchForm.controls.email.touched &&
+              searchForm.controls.email.errors
+            "
+          >
+            *Has ingresado un dato inválido
+          </mat-error>
+        </mat-form-field>
+
+        <!-- password -->
+        <mat-form-field
+          appearance="fill"
+          floatLabel="auto"
+          class="fullInput"
+          [ngClass]="getClassInput(searchForm.controls.password)"
+        >
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            id="password"
+            formControlName="password"
+            [type]="!hide ? 'password' : 'text'"
+            maxlength="30"
+            data-qadp="password"
+            [(ngModel)]="password"
+          />
+          <mat-error
+            *ngIf="
+              searchForm.controls.password.touched &&
+              searchForm.controls.password.invalid
+            "
+            >*Este campo es obligatorio, mínimo 4 caracteres</mat-error
+          >
+        </mat-form-field>
+        <!-- phone -->
+        <mat-form-field
+          appearance="fill"
+          floatLabel="auto"
+          class="fullInput"
+          [ngClass]="getClassInput(searchForm.controls.phone)"
+        >
+          <mat-label>identificacion</mat-label>
+          <input
+            matInput
+            (input)="inputValidatorNumeric($event)"
+            formControlName="phone"
+            placeholder="Número de teléfono"
+            minlength="7"
+            maxlength="10"
+            data-qadp="phone"
+          />
+          <mat-error
+            *ngIf="
+              searchForm.controls.phone.touched &&
+              searchForm.controls.phone.errors
+            "
+          >
+            *Has ingresado un telefono inválido
+          </mat-error>
+        </mat-form-field>
+
+        <div class="btn-row">
+          <button
+            class="btn-filter"
+            (click)="searchUser()"
+            block="block"
+            [ngClass]="{ 'button-disabled': searchForm.invalid }"
+          >
+            <span>Filtrar</span>
+          </button>
+          <button
+            class="btn-clear"
+            (click)="clearForm()"
+            block="block"
+            [ngClass]="{ 'button-disabled': searchForm.invalid }"
+          >
+            <span>Limpiar</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
